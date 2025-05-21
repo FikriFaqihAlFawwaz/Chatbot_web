@@ -143,62 +143,6 @@
             <div class="chat-messages" id="chat-messages">
                 <!-- Messages will be dynamically added here -->
             </div>
-<<<<<<< HEAD
-          </div>
-        </a>
-  
-        <div id="response"></div>`;
-      $("#chat-input").val("");
-  
-      $("#list-group").append(html_data);
-      $('div#response:last').html(`
-      <!-- code here -->
-          <div class="py-3" id="ok-good">
-            <h2 class="skeleton1"></h2>
-            <h2 class="skeleton2"></h2>
-            <h2 class="skeleton3"></h2>
-          </div>`);
-      if ($("#ok-good").length) {
-        $('html, body').animate({
-          scrollTop: $("#ok-good").offset().top
-        }, 100);
-      }
-  
-      $.ajax({
-        type: "POST",
-        url: "/",
-        data: {
-          'prompt': question
-        },
-        success: function (data) {
-          let gpt_data = '';
-          gpt_data += `<a  style="background-color:#202835; border:black;"  href="#"
-              class="list-group-item list-group-item-action d-flex gap-3 py-3">
-              <img src="{{ url_for('static', filename='images/iba_logo.png') }}" alt="twbs" width="32" height="32"
-                class="rounded-circle flex-shrink-0">
-              <div class="d-flex gap-2 w-100 justify-content-between">
-                <div>
-                  <p id="typing-demo" class="mb-0 opacity-75 text-white"></p>
-                </div>
-              </div>
-            </a> <p style="background-color:#101626; color:#101626;">to_hide_it</p><br>`;
-  
-          $("#list-group").append(gpt_data);
-          $('div#response:last').html('');
-  
-          var i = 0;
-          var speed = 5;
-  
-          function typeWriter() {
-            if (i < data.length) {
-              $("p#typing-demo:last").text($("p#typing-demo:last").text() + data.charAt(i));
-              i++;
-              setTimeout(typeWriter, speed);
-            }
-          }
-  
-          typeWriter();
-=======
         </div>
 
         <!-- Chat Input -->
@@ -305,14 +249,6 @@
             });
         });
 
-        // Function to load the main chat view
-        document.getElementById('mengobrol').addEventListener('click', () => {
-            // Show the welcome message and reset chat area
-            document.getElementById('welcome-message').style.display = 'block';
-            const messagesContainer = document.getElementById('chat-messages');
-            messagesContainer.innerHTML = ''; // Clear any previous chat content
-        });
-
         // New chat button functionality to reset chat area and show the main screen again
         document.getElementById('new-chat').addEventListener('click', () => {
             // Show the welcome message and reset chat area
@@ -341,7 +277,6 @@
 
             messagesContainer.appendChild(messageDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
->>>>>>> 2f551f8 (Initial commit)
         }
 
         // Save conversation to backend
