@@ -1,0 +1,13 @@
+{
+  "id": "f3c3f9a4-0bf9-407a-bc08-403a1153e7f1",
+  "timestamp": "2025-04-29T06:14:25.268820",
+  "input": "Python data types are given below",
+  "output": "**LINKEDIN**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 14
+  }
+}

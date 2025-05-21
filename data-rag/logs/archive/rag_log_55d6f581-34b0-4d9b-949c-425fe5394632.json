@@ -1,0 +1,13 @@
+{
+  "id": "55d6f581-34b0-4d9b-949c-425fe5394632",
+  "timestamp": "2025-04-29T06:10:33.676449",
+  "input": "apa itu flowchart?",
+  "output": "**Flowchart atau bagan alur adalah diagram yang menampilkan langkah-langkah dan keputusan untuk melakukan sebuah proses dari suatu program. Setiap langkah digambarkan dalam bentuk diagram dan dihubungkan dengan garis atau arah panah.**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "id",
+    "chat_history_length": 2
+  }
+}

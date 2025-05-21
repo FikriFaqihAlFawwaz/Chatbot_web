@@ -1,0 +1,13 @@
+{
+  "id": "1aa65a4f-f872-40ef-9284-9cb279314b0c",
+  "timestamp": "2025-04-29T06:15:26.226800",
+  "input": "Python divides operator in following Groups",
+  "output": "**Arithmetic operators and Comparison operators**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 20
+  }
+}

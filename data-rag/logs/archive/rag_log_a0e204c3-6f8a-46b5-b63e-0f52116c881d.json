@@ -1,0 +1,13 @@
+{
+  "id": "a0e204c3-6f8a-46b5-b63e-0f52116c881d",
+  "timestamp": "2025-04-28T04:28:35.061083",
+  "input": "apa itu logika?",
+  "output": "**Logika adalah ilmu yang memberikan prinsip-prinsip yang harus diikuti agar dapat berfikir valid menurut aturan yang berlaku. Logika identik dengan masuk akal dan penalaran.**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "id",
+    "chat_history_length": 2
+  }
+}

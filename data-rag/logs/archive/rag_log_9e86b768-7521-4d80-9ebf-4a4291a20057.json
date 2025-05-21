@@ -1,0 +1,12 @@
+{
+  "id": "9e86b768-7521-4d80-9ebf-4a4291a20057",
+  "timestamp": "2025-04-27T16:09:20.123654",
+  "input": "python adalah",
+  "output": "Assistant: Saya tidak memiliki informasi cukup dari dokumen yang diunggah untuk menjawab ini.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 0,
+    "language": "id"
+  }
+}

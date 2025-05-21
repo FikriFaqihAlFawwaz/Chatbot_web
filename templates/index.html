@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Modern Gemini AI Chatbot Interface" name="description" />
+    <title>Fikss AI Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <style>
+        /* Custom style for the sidebar toggle */
+        #sidebar {
+            transition: width 0.3s ease;
+        }
+
+        #sidebar.sidebar-collapsed {
+            width: 4rem; /* collapsed sidebar */
+        }
+
+        #sidebar .sidebar-text {
+            display: inline-block;
+            transition: opacity 0.3s ease;
+        }
+
+        #sidebar.sidebar-collapsed .sidebar-text {
+            opacity: 0;
+            width: 0;
+            overflow: hidden;
+        }
+
+        #main-content {
+            transition: margin-left 0.3s ease;
+        }
+
+        .ml-64 {
+            margin-left: 16rem;
+        }
+
+        .ml-16 {
+            margin-left: 4rem;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white h-screen flex">
+
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-800 p-6 flex flex-col" id="sidebar">
+        <div class="flex items-center mb-6">
+            <img alt="Logo" class="w-10 h-10 mr-2" height="40" src="https://placehold.co/40x40" width="40" />
+            <span class="text-xl font-bold" id="sidebar-title">Fikss AI</span> <!-- Hidden on collapse -->
+        </div>
+        <nav class="flex-1">
+            <ul>
+                <li class="mb-4">
+                    <a class="flex items-center text-lg hover:text-blue-400" href="#" id="mengobrol">
+                        <i class="fas fa-comments mr-3"></i>
+                        <span class="sidebar-text">Mengobrol</span> <!-- Hidden on collapse -->
+                    </a>
+                </li>
+                <!-- Chat PDF link added here -->
+                <li class="mb-4">
+                    <a class="flex items-center text-lg hover:text-blue-400" href="{{ url_for('chat_pdf_page') }}" id="chat-pdf">
+                        <i class="fas fa-file-pdf mr-3"></i>
+                        <span class="sidebar-text">Chat PDF</span> <!-- Hidden on collapse -->
+                    </a>
+                </li>
+
+                <li class="mb-4">
+                    <button class="flex items-center w-full text-lg text-left hover:text-blue-400" id="load-history">
+                        <i class="fas fa-history mr-3"></i>
+                        <span class="sidebar-text">Load History</span> <!-- Hidden on collapse -->
+                    </button>
+                </li>
+                <li class="mb-4">
+                    <button class="flex items-center w-full text-lg text-left hover:text-blue-400" id="new-chat">
+                        <i class="fas fa-comments mr-3"></i>
+                        <span class="sidebar-text">New Chat</span> <!-- Hidden on collapse -->
+                    </button>
+                </li>
+                {% if session.get('email') %}
+                    <!-- Logout Button if user is logged in -->
+                    <li class="mb-4">
+                        <a class="flex items-center text-lg text-red-400 hover:text-red-500" href="{{ url_for('logout') }}">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <!-- Login and Register Buttons if user is not logged in -->
+                    <li class="mb-4">
+                        <a class="flex items-center text-lg text-blue-400 hover:text-blue-500" href="{{ url_for('login') }}">
+                            <i class="fas fa-sign-in-alt mr-3"></i>
+                            <span class="sidebar-text">Login</span>
+                        </a>
+                    </li>
+                    <li class="mb-4">
+                        <a class="flex items-center text-lg text-green-400 hover:text-green-500" href="{{ url_for('register') }}">
+                            <i class="fas fa-user-plus mr-3"></i>
+                            <span class="sidebar-text">Register</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% if session.get('email') %}
+        <div class="mt-auto flex items-center">
+            <img alt="User Avatar" class="w-10 h-10 mr-2 rounded-full" height="40" src="{{ session.get('avatar') }}" width="40" />
+            <span class="text-sm">
+                User: <strong>{{ session.get('name') }}</strong><br />
+                Email: <span class="text-xs">{{ session.get('email') }}</span>
+            </span>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Button to toggle sidebar -->
+    <button id="sidebar-toggle" class="p-4 bg-gray-800 text-white fixed top-4 left-4 z-50 rounded-md">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-8 flex flex-col justify-center items-center transition-all duration-300" id="main-content">
+        <!-- Welcome Message -->
+        <div id="welcome-message" class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-2">Hai, {{ session.get('name') or 'Guest' }}</h1>
+            <p class="text-xl">Bagaimana saya bisa membantu Anda hari ini?</p>
+        </div>
+
+        <!-- Model Selection -->
+        <div class="mb-6">
+            <label for="model-selector" class="text-sm text-gray-300">Select AI Model:</label>
+            <select id="model-selector" class="bg-gray-700 text-white rounded px-4 py-2 mt-2">
+                <option value="model1">API-Iqbal</option>
+                <option value="model2">Gemini-1.5-flash</option>
+            </select>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="flex-1 overflow-y-auto mt-6 w-full max-w-3xl mx-auto" id="chat-container">
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be dynamically added here -->
+            </div>
+<<<<<<< HEAD
+          </div>
+        </a>
+  
+        <div id="response"></div>`;
+      $("#chat-input").val("");
+  
+      $("#list-group").append(html_data);
+      $('div#response:last').html(`
+      <!-- code here -->
+          <div class="py-3" id="ok-good">
+            <h2 class="skeleton1"></h2>
+            <h2 class="skeleton2"></h2>
+            <h2 class="skeleton3"></h2>
+          </div>`);
+      if ($("#ok-good").length) {
+        $('html, body').animate({
+          scrollTop: $("#ok-good").offset().top
+        }, 100);
+      }
+  
+      $.ajax({
+        type: "POST",
+        url: "/",
+        data: {
+          'prompt': question
+        },
+        success: function (data) {
+          let gpt_data = '';
+          gpt_data += `<a  style="background-color:#202835; border:black;"  href="#"
+              class="list-group-item list-group-item-action d-flex gap-3 py-3">
+              <img src="{{ url_for('static', filename='images/iba_logo.png') }}" alt="twbs" width="32" height="32"
+                class="rounded-circle flex-shrink-0">
+              <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                  <p id="typing-demo" class="mb-0 opacity-75 text-white"></p>
+                </div>
+              </div>
+            </a> <p style="background-color:#101626; color:#101626;">to_hide_it</p><br>`;
+  
+          $("#list-group").append(gpt_data);
+          $('div#response:last').html('');
+  
+          var i = 0;
+          var speed = 5;
+  
+          function typeWriter() {
+            if (i < data.length) {
+              $("p#typing-demo:last").text($("p#typing-demo:last").text() + data.charAt(i));
+              i++;
+              setTimeout(typeWriter, speed);
+            }
+          }
+  
+          typeWriter();
+=======
+        </div>
+
+        <!-- Chat Input -->
+        <div class="mt-4 bg-transparent p-4 rounded-lg flex items-center w-full max-w-3xl mx-auto">
+            <input class="bg-transparent flex-1 text-white outline-none" id="chat-input" placeholder="Ketik pesan..." type="text" />
+            <button class="text-gray-400 ml-2" id="chat-submit">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script>
+        // Toggle sidebar visibility
+        const toggleButton = document.getElementById('sidebar-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const sidebarTitle = document.getElementById('sidebar-title');
+        const sidebarText = document.querySelectorAll('.sidebar-text');
+
+        toggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('sidebar-collapsed');
+            mainContent.classList.toggle('ml-64');
+            mainContent.classList.toggle('ml-16');
+
+            sidebarText.forEach(text => {
+                text.classList.toggle('hidden', sidebar.classList.contains('sidebar-collapsed'));
+            });
+            sidebarTitle.classList.toggle('hidden', sidebar.classList.contains('sidebar-collapsed'));
+        });
+
+        // Sidebar active state toggle
+        const sidebarLinks = document.querySelectorAll('#sidebar a, #sidebar button');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Remove 'text-blue-400' from all sidebar links
+                sidebarLinks.forEach(link => link.classList.remove('text-blue-400'));
+                // Add 'text-blue-400' to the clicked link
+                link.classList.add('text-blue-400');
+            });
+        });
+
+        // Function to handle PDF upload and display extracted text
+        document.getElementById('chat-pdf').addEventListener('click', function() {
+            // Open file input dialog for PDF file
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = '.pdf';  // Only accept PDF files
+
+            fileInput.addEventListener('change', function() {
+                const file = fileInput.files[0];
+                if (file) {
+                    // Create a FormData object to send the file
+                    const formData = new FormData();
+                    formData.append('file', file);
+
+                    // Send file to server for PDF processing
+                    $.ajax({
+                        url: '/pdf/upload',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,  // Prevent jQuery from transforming the data
+                        contentType: false,  // Set the content type to 'multipart/form-data'
+                        success: function(response) {
+                            if (response.status === 'success') {
+                                // Display extracted text (or process it further)
+                                alert('Extracted Text: ' + response.extracted_text);
+                            } else {
+                                alert('Error: ' + response.message);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            alert('An error occurred: ' + error);
+                        }
+                    });
+                }
+            });
+
+            fileInput.click();  // Trigger file selection dialog
+        });
+
+        // Function to load chat history
+        document.getElementById('load-history').addEventListener('click', () => {
+            // Hide welcome message and show history
+            document.getElementById('welcome-message').style.display = 'none';
+
+            const messagesContainer = document.getElementById('chat-messages');
+            messagesContainer.innerHTML = ''; // Clear existing chat messages
+
+            $.ajax({
+                type: "GET",
+                url: "/load_history",  // Fetch history route
+                success: function(data) {
+                    const history = data.history;
+
+                    history.forEach(item => {
+                        appendMessage(item.message, 'user');
+                        appendMessage(item.response, 'ai');
+                    });
+                },
+                error: function() {
+                    appendMessage('Oops! Unable to load chat history.', 'ai');
+                }
+            });
+        });
+
+        // Function to load the main chat view
+        document.getElementById('mengobrol').addEventListener('click', () => {
+            // Show the welcome message and reset chat area
+            document.getElementById('welcome-message').style.display = 'block';
+            const messagesContainer = document.getElementById('chat-messages');
+            messagesContainer.innerHTML = ''; // Clear any previous chat content
+        });
+
+        // New chat button functionality to reset chat area and show the main screen again
+        document.getElementById('new-chat').addEventListener('click', () => {
+            // Show the welcome message and reset chat area
+            document.getElementById('welcome-message').style.display = 'block';
+            const messagesContainer = document.getElementById('chat-messages');
+            messagesContainer.innerHTML = ''; // Clear any previous chat content
+
+            // Optionally, clear the chat input
+            document.getElementById('chat-input').value = '';
+        });
+
+        // Function to append a message to the chat window
+        function appendMessage(message, sender) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+
+            messageDiv.classList.add('message', `${sender}-message`, 'mb-4', 'flex', 'items-start', `${sender === 'user' ? 'justify-end' : 'justify-start'}`);
+
+            const formattedMessage = message
+                .replace(/\n/g, '<br>')
+                .replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+
+            messageDiv.innerHTML = `
+                <div class="message-content text-white p-2 max-w-xs">${formattedMessage}</div>
+            `;
+
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+>>>>>>> 2f551f8 (Initial commit)
+        }
+
+        // Save conversation to backend
+        function saveConversation(message, sender) {
+            $.ajax({
+                type: "POST",
+                url: "/save_conversation",
+                data: { 'message': message, 'sender': sender },
+                success: function(response) {
+                    console.log("Conversation saved successfully.");
+                },
+                error: function() {
+                    console.error("Failed to save conversation.");
+                }
+            });
+        }
+
+        // Handle chat submission (sending message and AI response)
+        document.getElementById('chat-submit').addEventListener('click', () => {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            const selectedModel = document.getElementById('model-selector').value;
+
+            if (message) {
+                const welcomeMessage = document.getElementById('welcome-message');
+                if (welcomeMessage) {
+                    welcomeMessage.style.display = 'none';
+                }
+
+                appendMessage(message, 'user');
+                saveConversation(message, 'user');
+
+                input.value = '';
+
+                displayTypingIndicator();
+
+                setTimeout(() => {
+                    $.ajax({
+                        type: "POST",
+                        url: "/",
+                        data: { 'prompt': message, 'model': selectedModel },
+                        success: function(data) {
+                            removeTypingIndicator();
+                            const aiResponse = data.response;
+                            appendMessage(aiResponse, 'ai');
+                            saveConversation(aiResponse, 'ai');
+                        },
+                        error: function() {
+                            removeTypingIndicator();
+                            appendMessage('Oops! Something went wrong. Please try again.', 'ai');
+                        }
+                    });
+                }, 2000);
+            }
+        });
+
+        function displayTypingIndicator() {
+            const messagesContainer = document.getElementById('chat-messages');
+            const typingIndicator = document.createElement('div');
+            typingIndicator.classList.add('typing-indicator', 'mb-4', 'flex', 'items-start', 'justify-start');
+            typingIndicator.innerHTML = `
+                <div class="flex space-x-2">
+                    <div class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                </div>
+            `;
+            messagesContainer.appendChild(typingIndicator);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const typingIndicator = document.querySelector('.typing-indicator');
+            if (typingIndicator) typingIndicator.remove();
+        }
+    </script>
+</body>
+
+</html>

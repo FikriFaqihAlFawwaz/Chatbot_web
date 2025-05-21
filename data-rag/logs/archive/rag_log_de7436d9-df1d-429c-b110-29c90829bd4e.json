@@ -1,0 +1,12 @@
+{
+  "id": "de7436d9-df1d-429c-b110-29c90829bd4e",
+  "timestamp": "2025-04-24T13:01:42.409415",
+  "input": "dimana Jakarta?",
+  "output": "Assistant: Saya tidak memiliki informasi cukup dari dokumen yang diunggah untuk menjawab ini.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 3,
+    "language": "id"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "2c17ad11-0acf-4f4e-bde3-4dc0b7083cbf",
+  "timestamp": "2025-05-04T02:56:30.900259",
+  "input": "PYTHON DATA TYPES",
+  "output": "**Python Data Types:**\n\n* A variable can hold different types of values.\n* For example, `name` must be stored in a string, while `id` is stored in an integer.\n* Variables can store data of different types, and different types can do different things.\n* Python data types are given below.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 12
+  }
+}

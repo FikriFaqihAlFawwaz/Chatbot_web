@@ -1,0 +1,13 @@
+{
+  "id": "8e421bd4-c022-4872-876f-aa6ec3b22b27",
+  "timestamp": "2025-05-04T17:27:27.189836",
+  "input": "apa itu algortima?",
+  "output": "**Algoritma adalah sebuah nama yang singkat namun cukup menggambarkan apa yang dilakukan oleh algoritma tersebut, disertai dengan penjelasan singkat (intisari) tentang apa yang dilakukan oleh algoritma.**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "id",
+    "chat_history_length": 6
+  }
+}

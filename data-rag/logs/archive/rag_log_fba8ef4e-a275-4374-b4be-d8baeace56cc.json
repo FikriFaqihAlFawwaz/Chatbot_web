@@ -1,0 +1,13 @@
+{
+  "id": "fba8ef4e-a275-4374-b4be-d8baeace56cc",
+  "timestamp": "2025-05-04T02:54:57.568274",
+  "input": "jakarta?",
+  "output": "Saya tidak memiliki informasi cukup dari dokumen yang diunggah untuk menjawab ini.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 6
+  }
+}

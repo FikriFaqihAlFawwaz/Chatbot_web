@@ -1,0 +1,13 @@
+{
+  "id": "0daf0cd5-8348-4859-aa70-60f41268e2cc",
+  "timestamp": "2025-04-29T06:12:15.929741",
+  "input": "Variabel merupakan container yang digunakan untuk",
+  "output": "**menyimpan nilai**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 8
+  }
+}

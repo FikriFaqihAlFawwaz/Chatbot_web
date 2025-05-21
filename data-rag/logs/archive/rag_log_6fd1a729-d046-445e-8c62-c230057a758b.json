@@ -1,0 +1,13 @@
+{
+  "id": "6fd1a729-d046-445e-8c62-c230057a758b",
+  "timestamp": "2025-05-04T03:01:38.375620",
+  "input": "Python Bitwise Operator",
+  "output": "**Saya tidak memiliki informasi cukup dari dokumen yang diunggah untuk menjawab ini.**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 18
+  }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Modern Gemini AI Chatbot Interface" name="description" />
+    <title>Fikss AI - Chat PDF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-900 text-white h-screen flex">
+
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-800 p-6 flex flex-col" id="sidebar">
+        <div class="flex items-center mb-6">
+            <img alt="Logo" class="w-10 h-10 mr-2" height="40" src="https://placehold.co/40x40" width="40" />
+            <span class="text-xl font-bold" id="sidebar-title">Fikss AI</span> <!-- Hidden on collapse -->
+        </div>
+        <nav class="flex-1">
+            <ul>
+                <li class="mb-4">
+                    <a class="flex items-center text-lg hover:text-blue-400" href="{{ url_for('index') }}" id="mengobrol">
+                        <i class="fas fa-comments mr-3"></i>
+                        <span class="sidebar-text">Mengobrol</span> <!-- Hidden on collapse -->
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a class="flex items-center text-lg hover:text-blue-400" href="{{ url_for('chat_pdf_page') }}" id="chat-pdf">
+                        <i class="fas fa-file-pdf mr-3"></i>
+                        <span class="sidebar-text">Chat PDF</span> <!-- Hidden on collapse -->
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <button class="flex items-center w-full text-lg text-left hover:text-blue-400" id="load-history">
+                        <i class="fas fa-history mr-3"></i>
+                        <span class="sidebar-text">Load History</span> <!-- Hidden on collapse -->
+                    </button>
+                </li>
+                <li class="mb-4">
+                    <button class="flex items-center w-full text-lg text-left hover:text-blue-400" id="new-chat">
+                        <i class="fas fa-comments mr-3"></i>
+                        <span class="sidebar-text">New Chat</span> <!-- Hidden on collapse -->
+                    </button>
+                </li>
+                {% if session.get('email') %}
+                    <!-- Logout Button if user is logged in -->
+                    <li class="mb-4">
+                        <a class="flex items-center text-lg text-red-400 hover:text-red-500" href="{{ url_for('logout') }}">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <!-- Login and Register Buttons if user is not logged in -->
+                    <li class="mb-4">
+                        <a class="flex items-center text-lg text-blue-400 hover:text-blue-500" href="{{ url_for('login') }}">
+                            <i class="fas fa-sign-in-alt mr-3"></i>
+                            <span class="sidebar-text">Login</span>
+                        </a>
+                    </li>
+                    <li class="mb-4">
+                        <a class="flex items-center text-lg text-green-400 hover:text-green-500" href="{{ url_for('register') }}">
+                            <i class="fas fa-user-plus mr-3"></i>
+                            <span class="sidebar-text">Register</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% if session.get('email') %}
+        <div class="mt-auto flex items-center">
+            <img alt="User Avatar" class="w-10 h-10 mr-2 rounded-full" height="40" src="{{ session.get('avatar') }}" width="40" />
+            <span class="text-sm">
+                User: <strong>{{ session.get('name') }}</strong><br />
+                Email: <span class="text-xs">{{ session.get('email') }}</span>
+            </span>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Button to toggle sidebar -->
+    <button id="sidebar-toggle" class="p-4 bg-gray-800 text-white fixed top-4 left-4 z-50 rounded-md">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-8 flex flex-col justify-center items-center transition-all duration-300 ml-64" id="main-content">
+        <!-- Title and File Upload -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-2">Chat with Your PDF</h1>
+            <p class="text-xl">Upload a PDF file and interact with its content</p>
+        </div>
+
+        <!-- PDF File Upload Form -->
+        <form method="POST" enctype="multipart/form-data" class="mb-8">
+            <input type="file" name="file" accept=".pdf" class="bg-gray-700 text-white px-4 py-2 rounded" required />
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white ml-4">Upload PDF</button>
+        </form>
+
+        <!-- Display Extracted Text -->
+        {% if extracted_text %}
+        <div class="w-full max-w-3xl mx-auto p-4 bg-gray-800 rounded-lg mb-8">
+            <h3 class="text-xl font-bold mb-2">Extracted Text</h3>
+            <div class="text-white overflow-auto h-64">
+                <p>{{ extracted_text }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Chat with the bot (interact with extracted text) -->
+        <div class="flex-1 overflow-y-auto mt-6 w-full max-w-3xl mx-auto" id="chat-container">
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="mt-4 bg-transparent p-4 rounded-lg flex items-center w-full max-w-3xl mx-auto">
+            <input class="bg-transparent flex-1 text-white outline-none" id="chat-input" placeholder="Ketik pesan..." type="text" />
+            <button class="text-gray-400 ml-2" id="chat-submit">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <script>
+            // Function to append a message to the chat window
+            function appendMessage(message, sender) {
+                const messagesContainer = document.getElementById('chat-messages');
+                const messageDiv = document.createElement('div');
+
+                messageDiv.classList.add('message', `${sender}-message`, 'mb-4', 'flex', 'items-start', `${sender === 'user' ? 'justify-end' : 'justify-start'}`);
+
+                const formattedMessage = message
+                    .replace(/\n/g, '<br>')
+                    .replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+
+                messageDiv.innerHTML = `
+                    <div class="message-content text-white p-2 max-w-xs">${formattedMessage}</div>
+                `;
+
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            // Handle chat submission (sending message and AI response)
+            document.getElementById('chat-submit').addEventListener('click', () => {
+                const input = document.getElementById('chat-input');
+                const message = input.value.trim();
+
+                if (message) {
+                    appendMessage(message, 'user');
+                    input.value = '';
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/chat-pdf",  // Send to the same route for processing
+                        data: { 'prompt': message },
+                        success: function(data) {
+                            appendMessage(data.response, 'ai');
+                        },
+                        error: function() {
+                            appendMessage('Oops! Something went wrong. Please try again.', 'ai');
+                        }
+                    });
+                }
+            });
+        </script>
+    </div>
+
+</body>
+
+</html>

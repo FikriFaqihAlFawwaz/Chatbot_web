@@ -1,0 +1,13 @@
+{
+  "id": "85cadc0a-06c8-4038-89b5-c70a173094e1",
+  "timestamp": "2025-05-13T01:52:36.030043",
+  "input": "fungsi python?",
+  "output": "Fungsi atau fungsi adalah kode program yang terisolasi dalam satu blok kode, yang bisa dipanggil sewaktu-waktu. Fungsi memiliki beberapa atribut seperti nama fungsi, isi fungsi, parameter argument, dan nilai balik.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 8
+  }
+}

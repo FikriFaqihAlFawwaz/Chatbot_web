@@ -1,0 +1,13 @@
+{
+  "id": "d926218d-9b8c-4e9d-a685-9638464fbac9",
+  "timestamp": "2025-05-13T01:52:09.919719",
+  "input": "python",
+  "output": "Python adalah bahasa pemrograman high-level yang sangat powerful, sintaksnya sederhana dan mudah dipelajari, juga memiliki performa yang bagus.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 4
+  }
+}

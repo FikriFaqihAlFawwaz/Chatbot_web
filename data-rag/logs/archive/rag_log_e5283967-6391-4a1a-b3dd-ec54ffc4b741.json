@@ -1,0 +1,13 @@
+{
+  "id": "e5283967-6391-4a1a-b3dd-ec54ffc4b741",
+  "timestamp": "2025-04-29T06:13:15.053358",
+  "input": "Bahasa utama dalam membuat website",
+  "output": "**Saya tidak memiliki informasi cukup dari dokumen yang diunggah untuk menjawab ini.**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 10
+  }
+}

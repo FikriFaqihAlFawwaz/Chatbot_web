@@ -1,0 +1,12 @@
+{
+  "id": "2d3a632c-53e3-4713-8540-545bb3c097d4",
+  "timestamp": "2025-04-27T16:09:06.113495",
+  "input": "Apa itu operator aritmatika di Python?",
+  "output": "Assistant: Saya tidak memiliki informasi cukup dari dokumen yang diunggah untuk menjawab ini.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 0,
+    "language": "id"
+  }
+}

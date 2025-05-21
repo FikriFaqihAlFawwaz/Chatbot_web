@@ -1,0 +1,12 @@
+{
+  "id": "cad4446b-6234-417e-a799-2eed612cc3f7",
+  "timestamp": "2025-04-27T15:35:24.461909",
+  "input": "Instalasi Python via homebrew?",
+  "output": "Assistant: Saya tidak memiliki informasi cukup dari dokumen yang diunggah untuk menjawab ini.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 0,
+    "language": "en"
+  }
+}

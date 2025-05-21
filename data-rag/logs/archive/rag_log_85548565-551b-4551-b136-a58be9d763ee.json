@@ -1,0 +1,13 @@
+{
+  "id": "85548565-551b-4551-b136-a58be9d763ee",
+  "timestamp": "2025-05-04T17:27:05.541854",
+  "input": "apa itu html?",
+  "output": "**HTML adalah bahasa utama dalam membuat website, atau Hyper-Text Markup Language. Lazimnya semua halaman web ditulis menggunakan variasi HTML. Dengan HTML, pengembang website dapat memastikan bahwa text, gambar dan multimedia dapat menyatu dengan elemen lainnya ketika dijalankan di browser.**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "id",
+    "chat_history_length": 2
+  }
+}

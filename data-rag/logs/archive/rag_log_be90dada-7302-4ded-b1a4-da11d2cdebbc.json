@@ -1,0 +1,13 @@
+{
+  "id": "be90dada-7302-4ded-b1a4-da11d2cdebbc",
+  "timestamp": "2025-05-04T02:55:58.918580",
+  "input": "valid vs invalid identifier",
+  "output": "**Valid identifiers:**\n\n* abc\n* abc_de\n* abc255\n* ATUL_KUMAR\n* abe123\n\n**Invalid identifiers:**\n\n* 1abc (starts with a digit)\n* abc def (contains a white space)\n* abc@def (contains a special character)\n* abc-123 (contains a hyphen)",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 10
+  }
+}

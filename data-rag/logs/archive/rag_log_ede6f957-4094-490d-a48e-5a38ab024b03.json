@@ -1,0 +1,13 @@
+{
+  "id": "ede6f957-4094-490d-a48e-5a38ab024b03",
+  "timestamp": "2025-05-04T02:54:39.641062",
+  "input": "Python Variables",
+  "output": "**Variable adalah nama yang digunakan untuk mereferensi ke memory location. Python juga mengenalnya sebagai identifier dan digunakan untuk hold value. Di Python, kita tidak perlu menentukan tipe variabel karena Python cukup pintar untuk mengetahui tipe variabel.**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 4
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "f84c1078-1f9b-4e07-840a-8b8449d86054",
+  "timestamp": "2025-05-04T17:22:23.718585",
+  "input": "python adalah",
+  "output": "Assistant: Saya tidak memiliki informasi cukup dari dokumen yang diunggah untuk menjawab ini.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 0,
+    "language": "id",
+    "chat_history_length": 4
+  }
+}

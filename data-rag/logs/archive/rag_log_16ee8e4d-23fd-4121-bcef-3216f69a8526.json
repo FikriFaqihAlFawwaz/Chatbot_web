@@ -1,0 +1,13 @@
+{
+  "id": "16ee8e4d-23fd-4121-bcef-3216f69a8526",
+  "timestamp": "2025-04-29T06:14:42.436714",
+  "input": "PyTHON DATA TYPES",
+  "output": "**Fyurhon data types are given below**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 16
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "d442684f-ad79-491c-890d-a84bfa6ff3cf",
+  "timestamp": "2025-05-04T02:59:47.692082",
+  "input": "Example assignment operator are used ot assign value ot variable",
+  "output": "**Example assignment operators are:**\n\n* `=`\n* `+=`\n* `-=`\n* `*=`\n* `/=`\n* `//=`\n* `%=`\n* `**=`",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 14
+  }
+}

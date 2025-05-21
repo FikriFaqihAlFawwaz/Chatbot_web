@@ -1,0 +1,12 @@
+{
+  "id": "f2f814bf-3837-46bc-9425-be203b633953",
+  "timestamp": "2025-04-27T15:35:52.916791",
+  "input": "An arithmetic operator performs mathematical operations like addition, subtraction, division and multiplication.",
+  "output": "Assistant: Saya tidak memiliki informasi cukup dari dokumen yang diunggah untuk menjawab ini.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 0,
+    "language": "en"
+  }
+}

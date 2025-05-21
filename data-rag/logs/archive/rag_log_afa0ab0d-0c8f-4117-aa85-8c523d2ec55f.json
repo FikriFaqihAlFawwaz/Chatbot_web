@@ -1,0 +1,12 @@
+{
+  "id": "afa0ab0d-0c8f-4117-aa85-8c523d2ec55f",
+  "timestamp": "2025-04-27T15:34:16.750429",
+  "input": "apa itu flowchart?",
+  "output": "Assistant: Saya tidak memiliki informasi cukup dari dokumen yang diunggah untuk menjawab ini.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 0,
+    "language": "id"
+  }
+}

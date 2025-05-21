@@ -1,0 +1,21 @@
+<<<<<<< HEAD
+Flask==2.2.3
+google-generativeai
+gunicorn==20.0.4
+grpcio
+=======
+grpcio
+Werkzeug==2.2.3
+Flask
+Flask-Cors
+requests
+python-dotenv
+groq
+
+flask
+requests
+fastapi
+uvicorn
+pydantic
+mysql-connector-python
+>>>>>>> 2f551f8 (Initial commit)

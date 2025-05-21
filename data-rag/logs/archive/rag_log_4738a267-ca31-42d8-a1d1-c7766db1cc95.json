@@ -1,0 +1,13 @@
+{
+  "id": "4738a267-ca31-42d8-a1d1-c7766db1cc95",
+  "timestamp": "2025-05-13T01:52:17.382387",
+  "input": "html",
+  "output": "HTML atau Hyper-Text Markup Language.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 6
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "50ea2440-58ea-456c-84cd-1eaf950958f0",
+  "timestamp": "2025-05-04T17:27:14.029302",
+  "input": "apa itu logika?",
+  "output": "**Logika adalah kemampuan seorang manusia untuk berfikir dengan akal tentang suatu permasalahan menghasilkan sebuah kebenaran, dibuktikan dan dapat diterima akal. Logika seringkali dihubungkan dengan kecerdasan, seseorang yang mampu berlogika dengan baik sering orang menyebutnya sebagai pribadi yang cerdas.**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "id",
+    "chat_history_length": 4
+  }
+}

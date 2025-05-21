@@ -1,0 +1,13 @@
+{
+  "id": "9ce40c43-6882-4084-94d3-6147f0175e92",
+  "timestamp": "2025-04-29T06:13:48.251555",
+  "input": "html adalah",
+  "output": "**Bahasa utama dalam membuat website adalah HTML atau Hyper-Text Markup Language.**",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "id",
+    "chat_history_length": 12
+  }
+}

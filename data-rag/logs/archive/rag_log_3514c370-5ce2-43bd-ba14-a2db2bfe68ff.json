@@ -1,0 +1,13 @@
+{
+  "id": "3514c370-5ce2-43bd-ba14-a2db2bfe68ff",
+  "timestamp": "2025-05-13T01:52:54.640194",
+  "input": "list python?",
+  "output": "List python adalah deklarasi variabel dan data list menggunakan literal list dengan notasi penulisan seperti berikut:\n\n* Contoh list: `list_1 = [10, 70, 20]`\n* List dengan deklarasi secara vertikal: `list_2 = ['ab', 'hi', 'ca']`\n* List dengan element berisi bermacam-macam tipe data: list_3 = [3.14, 'hello python', True, False]`\n* List kosong: `list_4 = []`\n\nData dalam list biasa disebut dengan element.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "en",
+    "chat_history_length": 10
+  }
+}

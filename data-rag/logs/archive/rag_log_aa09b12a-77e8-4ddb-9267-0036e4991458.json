@@ -1,0 +1,13 @@
+{
+  "id": "aa09b12a-77e8-4ddb-9267-0036e4991458",
+  "timestamp": "2025-04-29T06:23:55.523954",
+  "input": "provinsi jakarta dimana?",
+  "output": "Assistant: Saya tidak memiliki informasi cukup dari dokumen yang diunggah untuk menjawab ini.",
+  "metadata": {
+    "source": "RAG System",
+    "model": "llama3-70b-8192",
+    "context_docs": 5,
+    "language": "id",
+    "chat_history_length": 0
+  }
+}
